@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fandom Quiz</title>
+</head>
+<body>
+    const chalk=require('chalk')
+console.log(chalk.green.underline.bold("Hey! Welcome to Mohit's Quiz of Harry Potter."));
+var readlineSync=require('readline-sync');
+
+// Object Defined inside array
+var hpQuestions = [{
+
+  question :
+   "1) Who was the Godfather of Harry Potter ?"+'\n'+
+   "a) Prof.Snape"+'\n'+
+   "b) Sirius Black"+'\n'+
+   "c) James Potter"+'\n',  
+  answer : "b"           
+},
+{
+  question : 
+  "2) Which one of the following was not the best friend of Harry Potter ?"+'\n'+
+  "a) Ronald Weasley"+'\n'+
+  "b) Hermione Granger"+'\n'+
+  "c) Draco Malfoy"+'\n',
+  answer : "c"
+},{
+ question : 
+  "3) Who gave Harry the cake on his Eleventh birthday ?"+'\n'+
+  "a) Hagrid"+'\n'+
+  "b) Hermione Granger"+'\n'+
+  "c) Ronald Weasley"+'\n',
+  answer : "a"
+},
+{
+ question : 
+  "4) What is the name of Harry Potter's pet ?"+'\n'+
+  "a) Dobby"+'\n'+
+  "b) Hedwig"+'\n'+
+  "c) Scabbers"+'\n',
+  answer : "b" 
+},
+{
+  question : 
+  "5) What is the name of third part of Harry Potter series ?"+'\n'+
+  "a) Harry Potter and the Goblet of Fire"+'\n'+
+  "b) Harry Potter and the Chamber of Secrets"+'\n'+
+  "c) Harry Potter and the Prisoner of Azkaban"+'\n',
+  answer : "c"
+},
+{
+ question : 
+  "6) What is the name of Harry Potter's cousin ?"+'\n'+
+  "a) Fred"+'\n'+
+  "b) Dudley"+'\n'+
+  "c) George"+'\n',
+  answer : "b" 
+},
+{
+question : 
+  "7) Who was The Defence Against the Dark Arts Teacher during the second year of Harry's at Hogwarts ?"+'\n'+
+  "a) Severus Snape"+'\n'+
+  "b) Dolores Umbridge"+'\n'+
+  "c) Gilderoy Lockhart"+'\n',
+  answer : "c" 
+},{
+question : 
+  "8) Who killed Harry Potter's parents ?"+'\n'+
+  "a) Sirius Black"+'\n'+
+  "b) Tom Marvolo Riddle"+'\n'+
+  "c) Severus Snape"+'\n',
+  answer : "b"
+}]
+
+// Calling entry
+enter("If you want to enter the Quiz press Key 'y' or press any other key to exit.... ","y");
+
+//Function for entering
+function enter(entryQuestion ,entryAnswer)
+{
+var userAnswer=readlineSync.question(entryQuestion);
+if(userAnswer.toUpperCase()===entryAnswer.toUpperCase())
+{
+console.log("Great you want to continue.")
+
+
+var score=0;
+function gamePlay(question ,answer)
+{
+  var playerAnswer=readlineSync.question(chalk.blue(question));
+   console.log(chalk.yellow("You answered = "+playerAnswer))
+  if(playerAnswer.toUpperCase()===answer.toUpperCase())
+  {
+    
+    console.log(chalk.green("You are correct."))
+    score=score+1;
+  }
+  else
+  {
+    console.log(chalk.red("You are incorrect."))
+  }
+ 
+  console.log(chalk.magenta("Your current score is = "+score))
+  console.log(chalk.yellow("==========="))
+  
+}
+// array call
+for(var i=0;i<hpQuestions.length;i++)
+{
+var currentQuestion = hpQuestions[i];
+//gameplay function calling
+gamePlay(currentQuestion.question,currentQuestion.answer)
+
+}
+console.log(chalk.cyan.underline("Your final Score is = "+score))
+console.log(chalk.red.underline("Thank you for Playing."))
+}
+else
+{
+  console.log(chalk.red.bold("Thank You and have a great day ahead."))
+}
+}
+
+</body>
+</html>
